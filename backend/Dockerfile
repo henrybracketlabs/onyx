@@ -121,8 +121,8 @@ COPY --chown=onyx:onyx ./scripts/force_delete_connector_by_id.py /app/scripts/fo
 COPY --chown=onyx:onyx ./scripts/supervisord_entrypoint.sh /app/scripts/supervisord_entrypoint.sh
 RUN chmod +x /app/scripts/supervisord_entrypoint.sh
 
-# Put logo in assets
-COPY --chown=onyx:onyx ./assets /app/assets
+# Make assets folder - Railway build 
+RUN mkdir -p /app/assets && chown onyx:onyx /app/assets
 
 ENV PYTHONPATH=/app
 
